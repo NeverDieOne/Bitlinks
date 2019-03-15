@@ -3,8 +3,6 @@ import requests
 import argparse
 from dotenv import load_dotenv
 
-load_dotenv()
-
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 
 
@@ -60,6 +58,7 @@ def is_bitlink(url, token):
 
 
 if __name__ == '__main__':
+    load_dotenv()
     parser = argparse.ArgumentParser(
         description='Создаёт короткую ссылку или возвращает количество переходов по короткой ссылке')
     parser.add_argument('url', help='Которкая или длинная ссылка')
