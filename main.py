@@ -30,7 +30,6 @@ def create_short_link(token, long_url):
 
 
 def count_clicks_on_link(token, short_url):
-    check_url_exists(short_url)
     url_for_response = normalize_bitlink(short_url)
     headers = {
         "Authorization": f"Bearer {token}"
@@ -41,6 +40,7 @@ def count_clicks_on_link(token, short_url):
     }
     response = requests.get(f"https://api-ssl.bitly.com/v4/bitlinks/{url_for_response}/clicks/summary", headers=headers,
                             params=params)
+    response.raise_for_status()
     return response.json()['total_clicks']
 
 
