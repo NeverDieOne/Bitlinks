@@ -71,10 +71,10 @@ if __name__ == '__main__':
             total_clicks = count_clicks_on_link(ACCESS_TOKEN, url)
             print('Количество переходов по ссылке', url, '-', total_clicks)
         except requests.exceptions.HTTPError:
-            print("Не могу посчитать количество кликов по этой ссылке")
+            print("Введите ссылку ещё раз")
     else:
         try:
             short_url = create_short_link(ACCESS_TOKEN, url)
             print('Ваша короткая ссылка -', short_url)
         except requests.exceptions.HTTPError:
-            print("Не могу создать короткую ссылку из этого url")
+            print("Введите ссылку ещё раз")
