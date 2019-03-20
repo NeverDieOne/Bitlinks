@@ -4,6 +4,7 @@ import argparse
 from dotenv import load_dotenv
 
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+ACCESS_TOKEN = '4075e57d5492c7c0fcb87ddd5b555e03e4da4342'
 
 
 def check_url_exists(url):
@@ -51,9 +52,9 @@ def is_bitlink(url, token):
     url_for_response = normalize_bitlink(url)
     response = requests.get(f'https://api-ssl.bitly.com/v4/bitlinks/{url_for_response}', headers=headers)
     try:
-        response.json()
+        response.raise_for_status()
         return True
-    except:
+    except requests.exceptions.HTTPError:
         return False
 
 
